@@ -1,0 +1,36 @@
+*{
+   margin: 0;
+   padding: 0;
+   box-sizing: content-box;
+}
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    gap: 10px;
+    padding: 50px;
+
+
+
+}
+.product{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 5%;
+    background-color: #f8f9fa;
+    width: 100px;
+    height: 400px;
+    width: calc((100% - 60px)/3);
+
+    
+}
+.h2{
+    font-size: 30px;
+}

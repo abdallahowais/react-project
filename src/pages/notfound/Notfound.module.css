@@ -1,0 +1,14 @@
+.bg{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ff5951;
+    font-weight: 800;
+    font-size: 600px;
+}
+h2{
+    font-weight: 800;
+    font-size: 60px;
+}

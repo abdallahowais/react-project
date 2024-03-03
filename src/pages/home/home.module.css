@@ -15,22 +15,8 @@
 
 
 }
-.product{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-radius: 5%;
-    background-color: #f8f9fa;
-    width: 100px;
-    height: 400px;
-    width: calc((100% - 60px)/3);
 
-    
-}
-.h2{
-    font-size: 30px;
+.title{
+    text-align: center;
+    padding-top: 20px;
 }

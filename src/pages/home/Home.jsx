@@ -18,16 +18,23 @@ export default function Home(){
  
     return (
         <>
-        <h2 className={style.h2}> welcome in my project</h2>
-        <div className={style.products}>
+        <h2 className={style.title}> welcome in our store</h2>
+
+            <div className={style.products}>
         {
-            products.map( product => 
-                <div className={style.product} key={product.id}>
-                    <h2 className={style.h2}>{product.name}</h2>
-                    <img src={product.image.secure_url}  />
+            products.map( product =>            
+                 <div className="card" style={{width: '18rem'}} key={product.id}>
+                <img src={product.image.secure_url} className="card-img-top"/>
+                <div className="card-body">
+                    <h5 className="card-title">{product.name}</h5>
                 </div>
+                </div>
+
             ) }
             </div>
+
+
+
         </>
        
 

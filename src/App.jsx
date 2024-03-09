@@ -7,7 +7,9 @@ import Cart from './pages/cart/Cart';
 import Signin from './pages/signin/Signin';
 import Signup from './pages/signup/Signup';
 import Notfound from './pages/notfound/Notfound';
-import Categories from './pages/categories/Categories';
+
+import { ToastContainer} from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -17,10 +19,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />
-      },
-      {
-        path: "/categories",
-        element: <Categories />
       },
       {
         path: "/products",
@@ -41,6 +39,10 @@ const router = createBrowserRouter([
         element: <Signup />
       },
       {
+        path: "/products?id=656afd2a5f24a07ecd5a5090",
+        element: <Products />
+      },
+      {
         path:'*',
         element:<Notfound/>
       }
@@ -54,6 +56,7 @@ export default function App() {
   return (
     <>
     <RouterProvider router={router} />
+    <ToastContainer />
     </>
   );
 }

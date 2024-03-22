@@ -10,6 +10,9 @@ import Notfound from './pages/notfound/Notfound';
 
 import { ToastContainer} from 'react-toastify';
   import 'react-toastify/dist/ReactToastify.css';
+import ProtectedRouter from './components/ProtectedRouter';
+import UserContextProvider from './context/user';
+import ProductPage from './pages/productpage/ProductPage';
 
 const router = createBrowserRouter([
   {
@@ -20,13 +23,24 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home />
       },
+      
+      {
+        path: "/productpage",
+        element: <ProductPage />
+      },
       {
         path: "/products",
         element: <Products />
       },
       {
         path: "/cart",
-        element: <Cart />
+        element:
+        <ProtectedRouter>
+           <Cart />
+        </ProtectedRouter> 
+        ,
+       
+
       },
    
    
@@ -38,10 +52,14 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />
       },
-      {
-        path: "/products?id=656afd2a5f24a07ecd5a5090",
-        element: <Products />
-      },
+    
+    
+    
+    
+      
+    
+
+     
       {
         path:'*',
         element:<Notfound/>
@@ -55,7 +73,10 @@ const router = createBrowserRouter([
 export default function App() {
   return (
     <>
+    <UserContextProvider>
     <RouterProvider router={router} />
+    </UserContextProvider>
+
     <ToastContainer />
     </>
   );

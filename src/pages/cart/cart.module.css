@@ -1,0 +1,23 @@
+.aaa{
+    display: flex;
+    justify-content: space-between;   
+    flex-wrap:wrap;
+    gap: 20px;
+    padding: 30px;
+    border: 2px black solid;
+    margin-top: 10px;
+}
+.aa{
+display: flex;
+justify-content: space-around;
+padding:20px 10px 0 0;
+border: 1px black solid;
+border-radius: 30px;
+box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+align-items: center;
+
+}
+img{
+    width: 150px;
+    height: 200px;
+}

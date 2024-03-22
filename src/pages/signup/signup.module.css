@@ -1,0 +1,46 @@
+form {
+    width: 300px;
+    margin: 0 auto;
+  }
+.eroor{
+    display: flex;
+    flex-direction: column;
+    margin-top:30px ;
+    gap: 10px;
+}
+.error{
+    width: 300px;
+    margin:  auto;
+    display: flex;
+}
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="file"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }q
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }

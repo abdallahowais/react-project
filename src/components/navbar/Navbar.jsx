@@ -1,6 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/user";
 
 export default function Navbar() {
+ const {userName,setUserName,setUserToken} = useContext(UserContext);
+  const navigate =useNavigate();
+ const logout = ()=>{
+  localStorage.removeItem('userToken');
+  setUserToken(null);
+  setUserName(null);
+  navigate('/signin');
+ };
   return (
 
 
@@ -12,13 +22,15 @@ export default function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          {
+            userName ? <>
+             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
 
             <li className="nav-item">
               <NavLink className="nav-link" to='/'>Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to='/products?id=656afd2a5f24a07ecd5a5090'>Products</NavLink>
+              <NavLink className="nav-link" to='/productpage'>Products</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to='cart'>Cart</NavLink>
@@ -27,13 +39,41 @@ export default function Navbar() {
 
           </ul>
           <ul className="navbar-nav  mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink className="nav-link" to='signup'>Sign Up</NavLink>
+          <li className="nav-item">
+              <NavLink className="nav-link" to='signin'>Hi {userName}</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to='signin'>Sign In</NavLink>
+              <button className="btn btn-outline-info m-2" onClick={logout}>Sign Out</button>
             </li>
+           
           </ul>
+            
+            </>:
+            <>
+             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+
+            <li className="nav-item">
+              <NavLink className="nav-link" to='/'>Home</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to='/productpage'>Products</NavLink>
+            </li>
+
+
+          </ul>
+          <ul className="navbar-nav  mb-2 mb-lg-0">
+          <li className="nav-item">
+              <NavLink className="btn btn-outline-info m-2" to='signin'>Sign In</NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="btn btn-outline-info  m-2" to='signup'>Sign Up</NavLink>
+            </li>
+            
+          </ul>
+            
+            </>
+          }
+         
 
         </div>
       </div>

@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 
 
 export default function Products() {
-   let [searchParams, setSearchParams] = useSearchParams();
+   let [searchParams] = useSearchParams();
    let id = searchParams.get('id');
   
 
@@ -21,7 +21,6 @@ export default function Products() {
       setproductCategories(data.products);
       setError("");
     } catch {
-      console.log("catch error");
       setError("Error to load data");
     } finally {
       setLoder(false);
@@ -35,6 +34,18 @@ export default function Products() {
   if (loder) {
     return <Loader />;
   }
+
+  const addToCart=async(productId)=>{
+    const token = localStorage.getItem('userToken');
+    const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{
+      productId
+    },
+    {
+      headers:{
+        Authorization:`Tariq__${token}`
+      },
+    });
+  };
 
   return (
     <>
@@ -53,6 +64,8 @@ export default function Products() {
             <div key={product._id}>
               <h6>{product.name}</h6>
               <img src={product.mainImage.secure_url} className="card-img-top" alt={product.name} />
+              <h5>${product.price} </h5>
+              <button onClick={()=>addToCart(product._id)} className="btn btn-outline-dark">add to cart successfully</button>
             </div>
           ))
         )}

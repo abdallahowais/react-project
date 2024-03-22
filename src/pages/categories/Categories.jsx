@@ -32,6 +32,7 @@ export default function Categories() {
 
   return (
     <>
+    <div className='container'>
       <h2 className={style.title}> welcome in our store</h2>
 
       {error ? <p className={style.error}>{error}</p> : null}
@@ -41,11 +42,12 @@ export default function Categories() {
           <div className={`card ${style.card}`} style={{ width: "18rem" }} key={product.id}>
             <img src={product.image.secure_url} className="card-img-top" />
             <div className="card-body">
-              <NavLink className="btn btn-primary" to={`/products?id=${product.id}`}>{product.name}</NavLink>
+              <NavLink className="btn btn-dark" to={`/products?id=${product.id}`}> {product.name}</NavLink>
 
             </div>
           </div>
         ))}
+      </div>
       </div>
     </>
   );

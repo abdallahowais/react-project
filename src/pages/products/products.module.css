@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: content-box;
 }
+img{
+  width: 200px;
+  height: 300px;
+  aspect-ratio: 200/300;
+
+}
 
 .products {
     display: flex;

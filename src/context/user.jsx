@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 export const UserContext = createContext();
 
 const UserContextProvider =({children})=>{
@@ -18,7 +19,23 @@ const UserContextProvider =({children})=>{
         getUserData();
     },[userToken])
 
-    return <UserContext.Provider  value={{setUserToken, userName,setUserName}}>
+
+    //هان ارسلت count للنافبار
+    const [cartCount, setCartCount]= useState([]);
+    const getCart = async ()=>{
+        const token = localStorage.getItem('userToken');
+        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/cart`,
+        {headers:{
+            Authorization:`Tariq__${token}`
+          }},)
+          setCartCount(data.count);
+        };
+    useEffect(() => {
+        getCart();
+      }, []);
+
+
+    return <UserContext.Provider  value={{setUserToken, userName,setUserName,cartCount}}>
         {children}
     </UserContext.Provider>
 };

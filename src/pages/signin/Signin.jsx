@@ -4,7 +4,7 @@ import{ object, string } from 'yup';
 import { Slide, toast } from 'react-toastify';
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/user";
-import style from"../signup/signup.module.css";
+import style from"./signin.module.css";
 
 
 
@@ -114,14 +114,17 @@ export default function Signin() {
 
   return (
     <>
-    <h2>LogIn</h2>
+    <div className={style.cotain}>
+
     <div className={style.eroor}>
     {errors.length > 0?errors.map(error=>
-     <p key={length}>{error}</p>
+     <p className={`alert alert-warning alert -block in   ${style.error}`} key={length}>{error}</p>
     ):''}
     </div>
 
       <form onSubmit={handelSubmit}>
+          <h1>Login</h1>
+
         <label>Email</label>
         <input
           type="email"
@@ -141,7 +144,11 @@ export default function Signin() {
 
         <button type="submit" className="btn btn-danger" disabled={loader?'disabled':null} >
           {!loader?"LogIn":"wait..."}</button>
+          <Link to='sendcode'>Lost password?</Link>
+          <Link to='signUp'>dont have account?</Link>
+
       </form>
+      </div>
     </>
   );
 }

@@ -8,9 +8,7 @@ export default function Roots() {
        <>
         <Navbar/>
 
-        <div className='container'>
        <Outlet/>
-       </div>
        <Footer/>
 
        </>

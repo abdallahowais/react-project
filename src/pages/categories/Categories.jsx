@@ -14,6 +14,7 @@ export default function Categories() {
       const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/categories/active?page=1&limit=10`);
       setProducts(data.categories);
       setError("");
+      console.log(data) 
     } catch {
       console.log("catch error");
       setError("Error to load data");
@@ -33,7 +34,7 @@ export default function Categories() {
   return (
     <>
     <div className='container'>
-      <h2 className={style.title}> welcome in our store</h2>
+      <h2 className={style.title}> Welcome in our store</h2>
 
       {error ? <p className={style.error}>{error}</p> : null}
 
@@ -42,7 +43,7 @@ export default function Categories() {
           <div className={`card ${style.card}`} style={{ width: "18rem" }} key={product.id}>
             <img src={product.image.secure_url} className="card-img-top" />
             <div className="card-body">
-              <NavLink className="btn btn-dark" to={`/products?id=${product.id}`}> {product.name}</NavLink>
+              <NavLink className="btn btn-outline-dark" to={`/products?id=${product.id}`}> {product.name}</NavLink>
 
             </div>
           </div>

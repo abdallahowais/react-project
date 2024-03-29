@@ -1,18 +1,25 @@
 form {
+    display: flex;
+    flex-direction: column;
     width: 300px;
     margin: 0 auto;
-  }
+    padding: 30px;
+    border:  2px solid rgb(50, 32, 23);
+    box-shadow: 10px 10px 20px rgba(226, 221, 221, 0.5);
+    background-color: rgb(173, 152, 125, 0.7);   
+    border-radius: 10px; 
+}
 .eroor{
     display: flex;
     flex-direction: column;
     margin-top:30px ;
     gap: 10px;
+
 }
 .error{
     width: 300px;
     margin:  auto;
     display: flex;
-    
 }
   
   label {
@@ -20,10 +27,8 @@ form {
     margin-bottom: 5px;
   }
   
-  input[type="text"],
   input[type="email"],
-  input[type="password"],
-  input[type="file"] {
+  input[type="password"]{
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -35,14 +40,21 @@ form {
   button[type="submit"] {
     width: 93%;
     padding: 10px;
+    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   
-  
-  .cotain{
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+.title{
+    text-align: center;
+    color: #007bff;
+}
+.cotain{
     height: 100vh;
     background-image: url(loginImage.jpg);
     background-repeat: no-repeat;

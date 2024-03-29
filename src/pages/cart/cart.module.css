@@ -1,10 +1,10 @@
-.aaa{
+.cartBody{
     display: flex;
     justify-content: space-between;   
     flex-wrap:wrap;
     gap: 20px;
     padding: 30px;
-    border: 2px black solid;
+    border: 2px white solid;
     margin-top: 10px;
 }
 .aa{
@@ -21,3 +21,8 @@ img{
     width: 150px;
     height: 200px;
 }
+
+.buttons {
+    color: white;
+}
+    

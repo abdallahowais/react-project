@@ -1,9 +1,14 @@
 import { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/user";
+import { CgProfile } from "react-icons/cg";
+import style from './navbar.module.css';
+import { TiShoppingCart } from "react-icons/ti";
+
 
 export default function Navbar() {
- const {userName,setUserName,setUserToken} = useContext(UserContext);
+ const {userName,setUserName,setUserToken,cartCount} = useContext(UserContext);
+
   const navigate =useNavigate();
  const logout = ()=>{
   localStorage.removeItem('userToken');
@@ -14,8 +19,8 @@ export default function Navbar() {
   return (
 
 
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container">
+    <nav  className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+      <div className={`container position-sticky ${style.aa}`}>
         <a className="navbar-brand" href="#">title</a>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
@@ -33,17 +38,20 @@ export default function Navbar() {
               <NavLink className="nav-link" to='/productpage'>Products</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to='cart'>Cart</NavLink>
+              <NavLink className="nav-link" to='cart'><TiShoppingCart  size={25} color="white" className={style.carticon}/> 
+              <span className="position-absolute top-1 translate-middle badge rounded-pill bg-danger">
+              {`${cartCount}`}  </span>
+              </NavLink>
             </li>
 
 
           </ul>
           <ul className="navbar-nav  mb-2 mb-lg-0">
           <li className="nav-item">
-              <NavLink className="nav-link" to='signin'>Hi {userName}</NavLink>
+              <NavLink className="nav-link" to='signin'><CgProfile size={20}/> {userName}</NavLink>
             </li>
             <li className="nav-item">
-              <button className="btn btn-outline-info m-2" onClick={logout}>Sign Out</button>
+              <button className={`btn btn-outline-primary m-2 ${style.buttonColor}`} onClick={logout}>Sign Out</button>
             </li>
            
           </ul>
@@ -63,10 +71,10 @@ export default function Navbar() {
           </ul>
           <ul className="navbar-nav  mb-2 mb-lg-0">
           <li className="nav-item">
-              <NavLink className="btn btn-outline-info m-2" to='signin'>Sign In</NavLink>
+              <NavLink className={`btn btn-outline-primary m-2 ${style.buttonColor}`} to='signin'>Sign In</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="btn btn-outline-info  m-2" to='signup'>Sign Up</NavLink>
+              <NavLink className={`btn btn-outline-primary m-2 ${style.buttonColor}`} to='signup'>Sign Up</NavLink>
             </li>
             
           </ul>

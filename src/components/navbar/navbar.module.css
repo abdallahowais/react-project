@@ -1,0 +1,19 @@
+.aa{
+    background-color:rgb(129, 113, 93);
+    border-radius: 3px;
+}
+.carticon{
+    border: 1px white solid;
+    padding: 2px;
+    border-radius: 50%;
+}
+.buttonColor{
+    color: white;
+    border: white solid;
+}
+.buttonColor:hover{
+    border: white solid;
+}
+.nav-item{
+    color: aqua;
+}

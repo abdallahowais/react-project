@@ -2,17 +2,16 @@ import axios from "axios";
 import { useState } from "react";
 import{ object, string } from 'yup';
 import { Slide, toast } from 'react-toastify';
-import style from"./signup.module.css";
 import { useNavigate } from "react-router-dom";
+import style from"../lostpassword/sendcode.module.css";
 
 
-export default function Signup() {
+
+export default function Sendcode() {
+
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    userName: "",
     email: "",
-    password: "",
-    image: "",
   });
 
   const [errors, setErrors] = useState([]);
@@ -27,23 +26,13 @@ export default function Signup() {
     });
   };
 
-  const handelImagechange = (e) => {
-    const { name, files } = e.target;
-    setUser({
-      ...user,
-      [name]: files[0],
-    });
-  };
   const validateData = async () => {
-    const SignUpSchema = object({
-        userName: string().required().min(5).max(20),
+    const SendcodeSchema = object({
         email: string().email().required(),
-        password: string().min(8).max(20).required(),
-        image: string().required(),
     });
 
     try{
-    await SignUpSchema.validate(user, {abortEarly:false});
+    await SendcodeSchema.validate(user, {abortEarly:false});
     return true;
     }    
     catch(error){
@@ -64,22 +53,18 @@ export default function Signup() {
     
     if(await validateData()){
 
-    const formData = new FormData();
-    formData.append("userName", user.userName);
-    formData.append("email", user.email);
-    formData.append("password", user.password);
-    formData.append("image", user.image);
+   
 
     try{
-    const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, formData);
+    const { data } = await axios.patch(`${import.meta.env.VITE_API_URL}/auth/sendcode`, 
+    {
+      email:user.email,
+    });
       setUser({
-        userName:'',
         email:'',
-        password:'',
-        image:'',
       });
       if(data.message=='success'){
-        toast.success('Account created successfully', {
+        toast.success('code send successfully check your email', {
           position: "top-right",
           autoClose: 4000,
           hideProgressBar: true,
@@ -91,12 +76,15 @@ export default function Signup() {
           transition: Slide,
 
           });
+       localStorage.setItem('userToken',data.token);
 
-          navigate('/signin');
+
+       navigate('/signin/sendcode/Forgetpassword');
          
-      }
+     }
+     console.log(data)
     }catch(error){
-        if(error.response.status === 409 ){
+      console.log(error);
           toast.error(error.response.data.message, {
             position: "bottom-right",
             autoClose: 4000,
@@ -109,7 +97,7 @@ export default function Signup() {
             transition: Slide,
 
             });
-        }
+        
     }
     finally{
       setLoader(false);
@@ -120,22 +108,16 @@ export default function Signup() {
 
   return (
     <>
+    <div className={style.cotain}>
+
     <div className={style.eroor}>
     {errors.length > 0?errors.map(error=>
-    <p className={`alert alert-warning alert -block in ${style.error}`} key={length}>{error}</p>
+     <p className={`alert alert-warning alert -block in   ${style.error}`} key={length}>{error}</p>
     ):''}
     </div>
 
       <form onSubmit={handelSubmit}>
-      <h1>Register</h1>
-
-        
-        <label>User name</label>
-        <input type="text"
-          value={user.userName}
-          name="userName"
-          onChange={handelchange}
-        />
+          <h6>Please, enter your email to retrieve your password</h6>
 
         <label>Email</label>
         <input
@@ -145,19 +127,12 @@ export default function Signup() {
           onChange={handelchange}
         />
 
-        <label>Password</label>
-        <input
-          type="password"
-          value={user.password}
-          name="password"
-          onChange={handelchange}
-        />
 
-        <label>Image</label>
-        <input type="file" name="image" onChange={handelImagechange} />
 
-        <button type="submit" className="btn btn-danger" disabled={loader?'disabled':null} >{!loader?"Register":"wait..."}</button>
+        <button type="submit" className="btn btn-danger" disabled={loader?'disabled':null} >
+          {!loader?"Send code":"wait..."}</button>
       </form>
+      </div>
     </>
   );
 }

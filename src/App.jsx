@@ -13,6 +13,8 @@ import { ToastContainer} from 'react-toastify';
 import ProtectedRouter from './components/ProtectedRouter';
 import UserContextProvider from './context/user';
 import ProductPage from './pages/productpage/ProductPage';
+import Sendcode from './pages/lostpassword/Sendcode';
+import Forgetpassword from './pages/lostpassword/Forgetpassword';
 
 const router = createBrowserRouter([
   {
@@ -52,9 +54,23 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <Signup />
       },
-    
-    
-    
+      {
+        path: "/signin/signup",
+        element: <Signup />
+      },
+      {
+        path: "/signin/sendcode",
+        element: <Sendcode />
+      },
+      
+      {
+        path: "/signin/sendcode/Forgetpassword",
+        element: <Forgetpassword />
+      },
+
+
+ 
+      
     
       
     

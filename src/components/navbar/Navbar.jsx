@@ -8,6 +8,8 @@ import { TiShoppingCart } from "react-icons/ti";
 
 export default function Navbar() {
  const {userName,setUserName,setUserToken,cartCount} = useContext(UserContext);
+  
+
 
   const navigate =useNavigate();
  const logout = ()=>{
@@ -21,7 +23,11 @@ export default function Navbar() {
 
     <nav  className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
       <div className={`container position-sticky ${style.aa}`}>
-        <a className="navbar-brand" href="#">title</a>
+        <div className={style.title}>
+        <img className={style.titleImg} src="./title.PNG" alt="" />
+        <a className="navbar-brand" href="#">haven style</a>
+        </div>
+
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>

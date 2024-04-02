@@ -120,6 +120,8 @@ export default function Signup() {
 
   return (
     <>
+        <div className={style.cotain}>
+
     <div className={style.eroor}>
     {errors.length > 0?errors.map(error=>
     <p className={`alert alert-warning alert -block in ${style.error}`} key={length}>{error}</p>
@@ -158,6 +160,7 @@ export default function Signup() {
 
         <button type="submit" className="btn btn-danger" disabled={loader?'disabled':null} >{!loader?"Register":"wait..."}</button>
       </form>
+      </div>
     </>
   );
 }

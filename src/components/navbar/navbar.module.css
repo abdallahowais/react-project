@@ -1,5 +1,5 @@
 .aa{
-    background-color:rgb(129, 113, 93);
+    background-color:rgb(84, 111, 122);
     border-radius: 3px;
 }
 .carticon{
@@ -16,4 +16,15 @@
 }
 .nav-item{
     color: aqua;
+}
+
+.title{
+    display: flex;
+    gap: 4px;  
+    font-family: cursive;  
+}
+.titleImg{
+    width: 50px;
+    height: 40px;
+    border-radius: 10px;
 }

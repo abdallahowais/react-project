@@ -3,12 +3,13 @@ import  { useEffect, useState } from 'react';
 import { CiCircleMinus } from "react-icons/ci";
 import { CiCirclePlus } from "react-icons/ci";
 import style from "./cart.module.css";
+import { NavLink } from 'react-router-dom';
 
 
 export default function Cart() {
     const [cart, setCart]= useState([]);
     const [cartCount, setCartCount]= useState([]);
-
+  console.log(cart)
     const getCart = async ()=>{
         const token = localStorage.getItem('userToken');
         const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/cart`,
@@ -99,7 +100,7 @@ export default function Cart() {
           
             }
           }
-      
+         
       
 
     return (
@@ -126,6 +127,8 @@ export default function Cart() {
           
         ))}
         <button onClick={()=>clearCart()} className={ ` btn btn-outline-dark ${style.buttons}`}>clear all</button>
+        <NavLink className="btn btn-outline-dark" to={`/order`}>check out</NavLink>
+
 
         </div>
       </>

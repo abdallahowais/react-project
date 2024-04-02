@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loader from "../../components/loader/Loader";
 import axios from "axios";
 import style from "../categories/categories.module.css"
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function ProductPage() {
     const [products, setProducts] = useState([]);
@@ -87,7 +87,7 @@ export default function ProductPage() {
                                 </div>
                                 <p>{renderRatingStars(product.avgRating)}</p>
 
-                                <NavLink className="btn btn-outline-dark" to={`/products?id=${product.id}`}>details</NavLink>
+                                <Link className="btn btn-outline-dark" to={`/productpage/${product._id}`}>details</Link>
 
                             </div>
                         </div>

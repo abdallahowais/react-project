@@ -15,6 +15,8 @@ import UserContextProvider from './context/user';
 import ProductPage from './pages/productpage/ProductPage';
 import Sendcode from './pages/lostpassword/Sendcode';
 import Forgetpassword from './pages/lostpassword/Forgetpassword';
+import Order from './pages/order/Order';
+import OneProduct from './pages/oneProduct/OneProduct';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,10 @@ const router = createBrowserRouter([
         element: <ProductPage />
       },
       {
+        path: "/productpage/:id",
+        element: <OneProduct />
+      },
+      {
         path: "/products",
         element: <Products />
       },
@@ -41,10 +47,12 @@ const router = createBrowserRouter([
            <Cart />
         </ProtectedRouter> 
         ,
-       
-
       },
    
+      {
+        path: "/order",
+        element: <Order />
+      },
    
       {
         path: "/signin",

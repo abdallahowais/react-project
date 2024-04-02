@@ -4,7 +4,8 @@
     flex-wrap:wrap;
     gap: 20px;
     padding: 30px;
-    border: 2px white solid;
+    border: 2px black solid;
+    border-radius:5px 60px 5px 60px ;
     margin-top: 10px;
 }
 .aa{
@@ -22,7 +23,3 @@ img{
     height: 200px;
 }
 
-.buttons {
-    color: white;
-}
-    

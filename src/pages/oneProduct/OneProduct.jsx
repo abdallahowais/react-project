@@ -4,6 +4,8 @@ import Loader from "../../components/loader/Loader";
 import style from "./oneproduct.module.css";
 import { useParams } from "react-router-dom";
 import { Slide, toast } from "react-toastify";
+import SmallLoader from "../../components/loader/SmallLoader";
+
 
 
 
@@ -11,14 +13,14 @@ import { Slide, toast } from "react-toastify";
 export default function OneProduct() {
     const {id} =useParams('id');
 
-  const [productCategories, setproductCategories] = useState([]);
+  const [product, setProduct] = useState([]);
   const [loder, setLoder] = useState(true);
   const [error, setError] = useState("");
 
-  const getProductsCategories = async () => {
+  const getProducts = async () => {
     try {
       const { data } = await axios.get(`${import.meta.env.VITE_API_URL }/products/${id}`);
-      setproductCategories(data);
+      setProduct(data);
       setError("");
       console.log(data)
     } catch {
@@ -29,7 +31,7 @@ export default function OneProduct() {
   };
 
   useEffect(() => {
-    getProductsCategories();
+    getProducts();
   }, []);
 
   if (loder) {
@@ -56,7 +58,8 @@ const addToCart=async(productId)=>{
   setLoder(true);
 
   
-try { const token = localStorage.getItem('userToken');
+  try { 
+  const token = localStorage.getItem('userToken');
     const {data}= await axios.post(`${import.meta.env.VITE_API_URL}/cart`,{
       productId
     },
@@ -94,7 +97,7 @@ try { const token = localStorage.getItem('userToken');
       <h2 className={style.title}>Welcome to our store</h2>
       {error ? <p className={style.error}>{error}</p> : null}
       <div className={` ${style.products}`}>
-        {productCategories.message != 'success' ? (
+        {product.message != 'success' ? (
 
             <div className={style.noProductsContainer}>
             <h2 className={style.noProductsTitle}>Sorry, there are currently no products to display</h2>
@@ -107,11 +110,11 @@ try { const token = localStorage.getItem('userToken');
             <div className={style.productContainer} >
 
            <div className={`${style.imgcontainer}`}>
-              <img  className={`img-fluid ${style.mainimage}`} src={productCategories.product.mainImage.secure_url}  alt={productCategories.product.name} />
+              <img  className={`img-fluid ${style.mainimage}`} src={product.product.mainImage.secure_url}  alt={product.product.name} />
                {/* subimage */}
                <div id="carouselExampleDark" className={`carousel carousel-dark slide ${style.subimage}`}>
   <div className="carousel-indicators">
-    {productCategories.product.subImages.map((subImage, index) => (
+    {product.product.subImages.map((subImage, index) => (
       <button 
         key={index}
         type="button"
@@ -124,9 +127,9 @@ try { const token = localStorage.getItem('userToken');
     ))}
   </div>
   <div className="carousel-inner">
-    {productCategories.product.subImages.map((subImage, index) => (
+    {product.product.subImages.map((subImage, index) => (
       <div className={`carousel-item ${index === 0 ? "active" : ""}`} key={index}>
-        <img src={subImage.secure_url} className="d-block w-100" alt={productCategories.name} />
+        <img src={subImage.secure_url} className="d-block w-100" alt={product.name} />
         
       </div>
     ))}
@@ -145,23 +148,23 @@ try { const token = localStorage.getItem('userToken');
 
                 <div className={style.info}>
                     <div className={`${style.namerate}`}>
-                    <h2>{productCategories.product.name}</h2>
+                    <h2>{product.product.name}</h2>
 
                     <div className={style.avgRating}>
-                    <p>{Math.floor(`${productCategories.avgRating}`)} </p>
-                    <p className={style.avgRate}>{renderRatingStars(productCategories.avgRating, '24px')}</p>
+                    <p>{Math.floor(`${product.avgRating}`)} </p>
+                    <p className={style.avgRate}>{renderRatingStars(product.avgRating, '24px')}</p>
                     </div>
 
                     </div>
                     <hr />
 
-                    <h5 className={style.price}>price:  ${productCategories.product.price} </h5>
+                    <h5 className={style.price}>price:  ${product.product.price} </h5>
                     <hr />
 
-                    <h5 className={style.discrip}>{productCategories.product.description}</h5>
+                    <h5 className={style.discrip}>{product.product.description}</h5>
                     <hr />
                     <div className={`${style.addtocart}`}>
-                    <button disabled={loder?'disabled':null} onClick={()=>addToCart(productCategories.product._id)} className="btn btn-dark"> {!loder?"add to cart":<SmallLoader />}</button>
+                    <button disabled={loder?'disabled':null} onClick={()=>addToCart(product.product._id)} className="btn btn-dark"> {!loder?"add to cart":<SmallLoader />}</button>
                     </div>
 
                 </div>
@@ -174,9 +177,9 @@ try { const token = localStorage.getItem('userToken');
           <div className={style.reviewsContainer}>
   <ul className={style.ull}>
     
-    {productCategories.product.reviews.map((review, index) => (
+    {product.product.reviews.map((review, index) => (
       <li className={style.lii} key={index}>
-        <img  className={style.userimage} src={review.createdBy.image.secure_url}  alt={productCategories.product.name} />
+        <img  className={style.userimage} src={review.createdBy.image.secure_url}  alt={product.product.name} />
         <p>{review.createdBy.userName}</p>
         <p className={style.avgRate}>{review.rating} {renderRatingStars(review.rating,'18px')}</p>
         <p>{review.comment}</p>       

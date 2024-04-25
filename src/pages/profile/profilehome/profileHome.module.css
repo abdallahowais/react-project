@@ -1,0 +1,23 @@
+.contain{
+    display: flex;
+    position: relative;
+    
+}
+.modal{
+    width: 15%;
+    height: 100vh;
+    background-color: rgb(138, 161, 176);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px;
+    color: black;
+    text-decoration: none;
+    top: 10;
+    width: 20%;
+}
+.aa{
+    text-decoration: none;
+    color: black;
+    
+}

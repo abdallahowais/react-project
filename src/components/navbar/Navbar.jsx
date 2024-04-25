@@ -24,7 +24,7 @@ export default function Navbar() {
     <nav  className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
       <div className={`container position-sticky ${style.aa}`}>
         <div className={style.title}>
-        <img className={style.titleImg} src="./title.PNG" alt="" />
+        <img className={style.titleImg} src="../title.PNG" alt="" />
         <a className="navbar-brand" href="#">haven style</a>
         </div>
 
@@ -54,7 +54,7 @@ export default function Navbar() {
           </ul>
           <ul className="navbar-nav  mb-2 mb-lg-0">
           <li className="nav-item">
-              <NavLink className="nav-link" to='signin'><CgProfile size={20}/> {userName}</NavLink>
+              <NavLink className="nav-link" to='profile'><CgProfile size={20}/> {userName}</NavLink>
             </li>
             <li className="nav-item">
               <button className={`btn btn-outline-primary m-2 ${style.buttonColor}`} onClick={logout}>Sign Out</button>

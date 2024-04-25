@@ -137,7 +137,7 @@ export default function Order(){
     //end if order
     return(
     <>
-    <div className={style.container}>er
+    <div className={style.container}>
     <div className={`container col-md-12  col-lg-12 ${style.contain}`}>
         {cart.map((carts, index) => (
           <div className={` ${style.cartWithInage} `} key={index}>

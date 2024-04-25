@@ -17,6 +17,11 @@ import Sendcode from './pages/lostpassword/Sendcode';
 import Forgetpassword from './pages/lostpassword/Forgetpassword';
 import Order from './pages/order/Order';
 import OneProduct from './pages/oneProduct/OneProduct';
+import Profile from './pages/profile/profilehome/Profile';
+import UserInfo from './pages/userinfo/UserInfo';
+import UserOrder from './pages/userorder/UserOrder';
+
+
 
 const router = createBrowserRouter([
   {
@@ -78,7 +83,25 @@ const router = createBrowserRouter([
 
 
  
-      
+      {
+        path: "/profile",
+        element: <Profile />,
+        children:[
+          {
+            path: "/profile",
+            element: <UserInfo />
+          },
+          {
+            path: "userorder",
+            element: <UserOrder />
+          },
+       
+          
+
+        ]
+
+      },
+
     
       
     

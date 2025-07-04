@@ -143,7 +143,7 @@ export default function Signin() {
 
 
         <button type="submit" className="btn btn-danger" disabled={loader?'disabled':null} >
-          {!loader?"LogIn":"wait..."}</button>
+          {!loader?"Login":"wait..."}</button>
           <Link to='sendcode'>Lost password?</Link>
           <Link to='signUp'>dont have account?</Link>
 
